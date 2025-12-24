@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>EcoWatch – Environmental Intelligence</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Leaflet -->
+  <link rel="stylesheet"
+    href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <div class="logo">🌍 EcoWatch</div>
+    <ul class="nav-links">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#map-section">Map</a></li>
+      <li><a href="#impact-section">Impact</a></li>
+      <li><a href="#petition-section">Petitions</a></li>
+      <li><a href="#news-section">News</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO / HOME -->
+  <section id="home" class="hero">
+    <h1>Environmental Risk Intelligence</h1>
+    <p>
+      Visualize environmental hazards, understand ecological impact,
+      and take civic action for a sustainable future.
+    </p>
+  </section>
+
+  <!-- MAP -->
+  <!-- <section id="map-section" class="section"> -->
+    <!-- <h2>Environmental Risk Map</h2> -->
+    <!-- <div id="map"></div> -->
+  <!-- </section> -->
+
+
+   <!-- <section id="map-section" class="section map-layout"> -->
+  <!-- <h2>Environmental Risk Map</h2> -->
+
+  <!-- <div class="map-container"> -->
+    <!-- <div id="map"></div> -->
+
+    <!-- 🔽 ADD THIS SIDEBAR HERE -->
+    <!-- <div id="zone-panel" class="zone-panel hidden"> -->
+      <!-- <h3 id="zone-name">Select a zone</h3> -->
+
+      <!-- <p><strong>Hazard:</strong> -->
+        <!-- <span id="zone-hazard"></span> -->
+      <!-- </p> -->
+
+      <!-- <p><strong>Human Impact:</strong> -->
+        <!-- <span id="zone-impact"></span> -->
+      <!-- </p> -->
+
+      <!-- <h4>🐾 Affected Species</h4> -->
+      <!-- <ul id="zone-species"></ul> -->
+
+      <!-- <h4>✍️ Petitions</h4> -->
+      <!-- <div id="zone-petitions"></div> -->
+
+      <!-- <h4>📰 Related News</h4> -->
+      <!-- <ul id="zone-news"></ul> -->
+    <!-- </div> -->
+    <!-- 🔼 END SIDEBAR -->
+
+    <section id="map-section" class="section map-layout">
+  <h2>Environmental Risk Map</h2>
+
+  <div class="map-container">
+
+    <!-- MAP -->
+    <div id="map"></div>
+
+    <!-- SIDEBAR -->
+    <aside id="zone-panel" class="zone-panel hidden">
+        <button id="close-panel" class="close-btn">✖</button>
+
+      <h3 id="zone-name">Select a zone</h3>
+
+      <p><strong>Hazard:</strong>
+        <span id="zone-hazard"></span>
+      </p>
+
+      <p><strong>Human Impact:</strong>
+        <span id="zone-impact"></span>
+      </p>
+
+      <h4>🐾 Affected Species</h4>
+      <ul id="zone-species"></ul>
+
+      <h4>✍️ Petitions</h4>
+      <div id="zone-petitions"></div>
+
+      <h4>📰 Related News</h4>
+      <ul id="zone-news"></ul>
+    </aside>
+
+  </div>
+</section>
+
+
+  </div>
+</section>
+
+
+  <!-- TIME SLIDER -->
+  <section class="section slider-section">
+    <h2>Past → Present → Future</h2>
+    <input type="range" min="2000" max="2050" value="2024" id="timeSlider">
+    <p id="timeLabel">Year: 2024</p>
+  </section>
+
+  <!-- IMPACT -->
+  <section id="impact-section" class="section">
+    <h2>Environmental Impact Analysis</h2>
+    <div id="impact">
+      Click a risk zone on the map to see AI-powered impact analysis.
+    </div>
+  </section>
+
+  <!-- PETITION -->
+  <section id="petition-section" class="section petition">
+    <h2>Public Petitions</h2>
+
+    <form id="petitionForm">
+      <input id="pname" placeholder="Name">
+      <input id="pemail" placeholder="Email">
+      <input id="pdescription" placeholder="Description">
+      <!-- <input id="plocation" placeholder="Your Address" required> -->
+      <button type="submit">Sign Petition</button>
+    </form>
+
+    <p id="petitionCount">Loading signatures...</p>
+  </section>
+
+  <!-- NEWS -->
+  <section id="news-section" class="section">
+    <h2>Latest Environmental News</h2>
+    <ul id="news"></ul>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>© 2025 EcoWatch | Civic-Tech Environmental Platform</p>
+  </footer>
+
+  <!-- Leaflet JS -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+  <!-- App Scripts -->
+  <script type="module" src="js/firebase.js"></script>
+  <script type="module" src="js/map.js"></script>
+  <script type="module" src="js/impact.js"></script>
+  <script type="module" src="js/petitions.js"></script>
+  <script type="module" src="js/news.js"></script>
+
+  <!-- Slider -->
+  <script>
+    const slider = document.getElementById("timeSlider");
+    const label = document.getElementById("timeLabel");
+    slider.addEventListener("input", () => {
+      label.innerText = "Year: " + slider.value;
+    });
+  </script>
+
+</body>
+</html>
