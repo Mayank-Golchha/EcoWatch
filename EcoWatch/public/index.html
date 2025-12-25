@@ -1,176 +1,186 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>EcoWatch – Environmental Intelligence</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <title>EcoWatch – Environmental Intelligence</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <link rel="stylesheet" href="css/styles.css">
 
-  <!-- Leaflet -->
-  <link rel="stylesheet"
-    href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
-
-  <!-- Styles -->
-  <link rel="stylesheet" href="css/styles.css">
+    <style>
+        .switch-link {
+            display: block;
+            text-align: center;
+            margin-top: 15px;
+            font-size: 0.9em;
+            color: #0b5d1e;
+            text-decoration: underline;
+            cursor: pointer;
+        }
+        .switch-link:hover { color: #084a17; }
+    </style>
 </head>
 
 <body>
 
-  <!-- NAVBAR -->
-  <nav class="navbar">
+<nav class="navbar">
     <div class="logo">🌍 EcoWatch</div>
     <ul class="nav-links">
-      <li><a href="#home">Home</a></li>
-      <li><a href="#map-section">Map</a></li>
-      <li><a href="#impact-section">Impact</a></li>
-      <li><a href="#petition-section">Petitions</a></li>
-      <li><a href="#news-section">News</a></li>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#map-section">Map</a></li>
+        <li><a href="#qa-section">Ask AI</a></li>
+        <li><a href="#petition-section">Petitions</a></li>
+
+        <li>
+            <button id="nav-login-btn" class="nav-btn">Login</button>
+            <button id="nav-signup-btn" class="nav-btn outline-btn">Sign Up</button>
+            <div id="user-display" class="hidden"></div>
+        </li>
     </ul>
-  </nav>
+</nav>
 
-  <!-- HERO / HOME -->
-  <section id="home" class="hero">
+<section id="home" class="hero">
     <h1>Environmental Risk Intelligence</h1>
-    <p>
-      Visualize environmental hazards, understand ecological impact,
-      and take civic action for a sustainable future.
-    </p>
-  </section>
-
-  <!-- MAP -->
-  <!-- <section id="map-section" class="section"> -->
-    <!-- <h2>Environmental Risk Map</h2> -->
-    <!-- <div id="map"></div> -->
-  <!-- </section> -->
-
-
-   <!-- <section id="map-section" class="section map-layout"> -->
-  <!-- <h2>Environmental Risk Map</h2> -->
-
-  <!-- <div class="map-container"> -->
-    <!-- <div id="map"></div> -->
-
-    <!-- 🔽 ADD THIS SIDEBAR HERE -->
-    <!-- <div id="zone-panel" class="zone-panel hidden"> -->
-      <!-- <h3 id="zone-name">Select a zone</h3> -->
-
-      <!-- <p><strong>Hazard:</strong> -->
-        <!-- <span id="zone-hazard"></span> -->
-      <!-- </p> -->
-
-      <!-- <p><strong>Human Impact:</strong> -->
-        <!-- <span id="zone-impact"></span> -->
-      <!-- </p> -->
-
-      <!-- <h4>🐾 Affected Species</h4> -->
-      <!-- <ul id="zone-species"></ul> -->
-
-      <!-- <h4>✍️ Petitions</h4> -->
-      <!-- <div id="zone-petitions"></div> -->
-
-      <!-- <h4>📰 Related News</h4> -->
-      <!-- <ul id="zone-news"></ul> -->
-    <!-- </div> -->
-    <!-- 🔼 END SIDEBAR -->
-
-    <section id="map-section" class="section map-layout">
-  <h2>Environmental Risk Map</h2>
-
-  <div class="map-container">
-
-    <!-- MAP -->
-    <div id="map"></div>
-
-    <!-- SIDEBAR -->
-    <aside id="zone-panel" class="zone-panel hidden">
-        <button id="close-panel" class="close-btn">✖</button>
-
-      <h3 id="zone-name">Select a zone</h3>
-
-      <p><strong>Hazard:</strong>
-        <span id="zone-hazard"></span>
-      </p>
-
-      <p><strong>Human Impact:</strong>
-        <span id="zone-impact"></span>
-      </p>
-
-      <h4>🐾 Affected Species</h4>
-      <ul id="zone-species"></ul>
-
-      <h4>✍️ Petitions</h4>
-      <div id="zone-petitions"></div>
-
-      <h4>📰 Related News</h4>
-      <ul id="zone-news"></ul>
-    </aside>
-
-  </div>
+    <p>Visualize environmental hazards, understand ecological impact, and take civic action.</p>
 </section>
 
-
-  </div>
+<section id="map-section" class="section map-layout">
+    <h2>Environmental Risk Map</h2>
+    <div class="map-container">
+        <div id="map"></div>
+        <aside id="zone-panel" class="zone-panel hidden">
+            <button id="close-panel" class="close-btn">✖</button>
+            <h3 id="zone-name">Select a zone</h3>
+            <p><strong>Hazard:</strong> <span id="zone-hazard"></span></p>
+            <p><strong>Human Impact:</strong> <span id="zone-impact"></span></p>
+            <h4>🐾 Affected Species</h4>
+            <ul id="zone-species"></ul>
+            <h4>✍️ Petitions</h4>
+            <div id="zone-petitions"></div>
+        </aside>
+    </div>
 </section>
 
-
-  <!-- TIME SLIDER -->
-  <section class="section slider-section">
+<section class="section slider-section">
     <h2>Past → Present → Future</h2>
     <input type="range" min="2000" max="2050" value="2024" id="timeSlider">
     <p id="timeLabel">Year: 2024</p>
-  </section>
+</section>
 
-  <!-- IMPACT -->
-  <section id="impact-section" class="section">
+<section id="impact-section" class="section">
     <h2>Environmental Impact Analysis</h2>
-    <div id="impact">
-      Click a risk zone on the map to see AI-powered impact analysis.
+    <div id="impact">Click a risk zone on the map to see AI-powered impact analysis.</div>
+</section>
+
+<section id="qa-section" class="section qa-section">
+    <h2>🤖 Ask an Eco-Expert</h2>
+    <div class="qa-container">
+        <div id="qa-response" class="qa-response hidden"></div>
+        <form id="qaForm" class="qa-form">
+            <input type="text" id="userQuestion" placeholder="E.g., How does deforestation affect local water cycles?" required />
+            <button type="submit">Ask Gemini</button>
+        </form>
     </div>
-  </section>
+</section>
 
-  <!-- PETITION -->
-  <section id="petition-section" class="section petition">
-    <h2>Public Petitions</h2>
+<section id="petition-section" class="section">
+    <div class="section-header">
+        <h2>📢 Active Petitions</h2>
+        <button id="open-create-btn" class="create-btn">+ Start Petition</button>
+    </div>
+    <div id="petition-grid" class="petition-grid"></div>
+</section>
 
-    <form id="petitionForm">
-      <input id="pname" placeholder="Name">
-      <input id="pemail" placeholder="Email">
-      <input id="pdescription" placeholder="Description">
-      <!-- <input id="plocation" placeholder="Your Address" required> -->
-      <button type="submit">Sign Petition</button>
-    </form>
-
-    <p id="petitionCount">Loading signatures...</p>
-  </section>
-
-  <!-- NEWS -->
-  <section id="news-section" class="section">
+<section id="news-section" class="section">
     <h2>Latest Environmental News</h2>
-    <ul id="news"></ul>
-  </section>
+    <p class="news-subtitle">Live updates from around the web</p>
+    <ul id="news" class="news-list"><li>Loading latest news...</li></ul>
+</section>
 
-  <!-- FOOTER -->
-  <footer>
+<footer>
     <p>© 2025 EcoWatch | Civic-Tech Environmental Platform</p>
-  </footer>
+</footer>
 
-  <!-- Leaflet JS -->
-  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<div id="sign-modal" class="modal hidden">
+    <div class="modal-content">
+        <span class="close-modal">&times;</span>
+        <h3>Confirm Signature</h3>
+        <p>You are about to sign: <strong id="modal-title">Title</strong></p>
+        <div class="modal-actions">
+            <button id="confirm-sign-btn" class="primary-btn">Yes, Sign It</button>
+        </div>
+    </div>
+</div>
 
-  <!-- App Scripts -->
-  <script type="module" src="js/firebase.js"></script>
-  <script type="module" src="js/map.js"></script>
-  <script type="module" src="js/impact.js"></script>
-  <script type="module" src="js/petitions.js"></script>
-  <script type="module" src="js/news.js"></script>
+<div id="create-modal" class="modal hidden">
+    <div class="modal-content">
+        <span class="close-modal">&times;</span>
+        <h3>Start a New Petition</h3>
+        <form id="create-form">
+            <label>Petition Title</label>
+            <input id="new-title" type="text" required>
+            <label>Description</label>
+            <textarea id="new-desc" rows="4" required></textarea>
+            <button type="submit" class="primary-btn">🚀 Launch Petition</button>
+        </form>
+    </div>
+</div>
 
-  <!-- Slider -->
-  <script>
+<div id="login-modal" class="modal hidden">
+    <div class="modal-content">
+        <span class="close-modal">&times;</span>
+        <h3>Welcome Back</h3>
+        <form id="login-form">
+            <label>Email Address</label>
+            <input id="login-email" type="email" placeholder="user@example.com" required>
+
+            <label>Password</label>
+            <input id="login-password" type="password" placeholder="••••••" required>
+
+            <button type="submit" class="primary-btn">Login</button>
+
+            <a href="#" id="switch-to-signup" class="switch-link">Don't have an account? Sign Up</a>
+        </form>
+    </div>
+</div>
+
+<div id="signup-modal" class="modal hidden">
+    <div class="modal-content">
+        <span class="close-modal">&times;</span>
+        <h3>Join EcoWatch</h3>
+        <form id="signup-form">
+            <label>Full Name</label>
+            <input id="signup-name" type="text" placeholder="John Doe" required>
+
+            <label>Email Address</label>
+            <input id="signup-email" type="email" placeholder="john@example.com" required>
+
+            <label>Password</label>
+            <input id="signup-password" type="password" placeholder="Create a password" required>
+
+            <button type="submit" class="primary-btn">Create Account</button>
+
+            <a href="#" id="switch-to-login" class="switch-link">Already have an account? Login</a>
+        </form>
+    </div>
+</div>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script type="module" src="js/firebase.js"></script>
+<script type="module" src="js/zones.js"></script>
+<script type="module" src="js/map.js"></script>
+<script type="module" src="js/impact.js"></script>
+<script type="module" src="js/auth.js"></script>
+<script type="module" src="js/petitions.js"></script>
+<script type="module" src="js/news.js"></script>
+<script type="module" src="js/qa.js"></script>
+<script>
     const slider = document.getElementById("timeSlider");
     const label = document.getElementById("timeLabel");
     slider.addEventListener("input", () => {
-      label.innerText = "Year: " + slider.value;
+        label.innerText = "Year: " + slider.value;
     });
-  </script>
+</script>
 
 </body>
 </html>
